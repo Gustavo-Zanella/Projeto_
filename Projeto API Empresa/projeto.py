@@ -20,7 +20,7 @@ class Banco_Empresa:
         return create_engine(connection)
 
 # Instanciação do banco de dados
-banco = Banco_Empresa('postgres', 'postgres', '192.168.15.83', '5432', 'zanella').get_engine()
+banco = Banco_Empresa('postgres', 'postgres', '127.0.0.1', '5432', 'zanella').get_engine()
 
 # Função para verificar se o CNPJ já está cadastrado no banco de dados
 def cnpj_existe(cnpj):
@@ -31,6 +31,8 @@ def cnpj_existe(cnpj):
 # Rota para cadastrar empresa
 @app.route('/cadastrar_empresa')
 def cadastrar_empresa():
+    df = pd.read_sql("SELECRT * FROM PUBLIC.TBEMPRESA", banco)
+    empresas = df.to_dict(orient='records')
     return render_template('cadastraempresa.html')
 
 # Rota para login
@@ -103,8 +105,8 @@ def inserir_empresa():
         'empnomefantasia': data['fantasia'],
         'empcapitalsocial': data['capital_social'],
         'empatividadepri': data['atividade_principal'][0]['text'],
-        'empnumerofuncionarios' : '123',
-        'empfatanualestimado' : '112312'
+        'empnumerofuncionarios' : '0',
+        'empfatanualestimado' : '0'
     }
 
     # Criar um DataFrame com os dados da empresa
