@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<architect-project version="1.0" appversion="1.0.9">
+ <project-name>Banco para API</project-name>
+ <print-settings numCopies="1" zoom="1.0" pageNumbersPrinted="true" orientation="1" paperWidth="612.0" paperHeight="792.0" leftBorder="50.0" rightBorder="50.0" topBorder="50.0" bottomBorder="50.0" />
+ <project-data-sources>
+  <data-source id="DS0">
+   <property key="Logical" value="PlayPen Database" />
+  </data-source>
+ </project-data-sources>
+ <source-databases>
+ </source-databases>
+ <target-database id="ppdb" dbcs-ref="DS0">
+  <table id="TAB1" populated="true" UUID="2a59df47-b89e-4e45-a33d-6137241bec9b" name="tbempresa" objectType="TABLE" physicalName="tbempresa" >
+   <remarks>Tabela Para Armazenar Empresas e Suas Informações.</remarks>
+   <folder id="FOLTAB11" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL2" populated="true" UUID="04f68f6d-6d80-472c-b743-dda5489180d2" autoIncrement="false" autoIncrementSequenceName="tbempresa_empcnpj_seq" defaultValue="" name="empcnpj" nullable="0" physicalName="empcnpj" precision="14" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL3" populated="true" UUID="5d86195f-c5bd-4934-bafe-e73c17e73cab" autoIncrement="false" autoIncrementSequenceName="tbempresa_empnomerazao_seq" defaultValue="" name="empnomerazao" nullable="1" physicalName="empnomerazao" precision="255" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL4" populated="true" UUID="e54883ff-ed36-4a54-af92-ac57ca8bf271" autoIncrement="false" autoIncrementSequenceName="tbempresa_empnomefantasia_seq" defaultValue="" name="empnomefantasia" nullable="1" physicalName="empnomefantasia" precision="255" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL5" populated="true" UUID="017d02c3-b542-4b73-9630-a19beff800c9" autoIncrement="false" autoIncrementSequenceName="tbempresa_empsituacao_seq" defaultValue="" name="empsituacao" nullable="1" physicalName="empsituacao" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="5" userDefinedTypeUUID="69fb547f-e14c-4748-9746-4c0e9e94eb52" >
+     <remarks>0-Inativo, 1-Ativo</remarks>
+    </column>
+    <column id="COL6" populated="true" UUID="8a3edde5-3cba-4c49-846f-38f918e06dfe" autoIncrement="false" autoIncrementSequenceName="tbempresa_emptipo_seq" defaultValue="" name="emptipo" nullable="1" physicalName="emptipo" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="5" userDefinedTypeUUID="69fb547f-e14c-4748-9746-4c0e9e94eb52" >
+     <remarks>1-Matriz, 2-Filial</remarks>
+    </column>
+    <column id="COL7" populated="true" UUID="18434d33-ba87-4444-be35-a9681ca21378" autoIncrement="false" autoIncrementSequenceName="tbempresa_empuf_seq" defaultValue="" name="empuf" nullable="1" physicalName="empuf" precision="2" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL8" populated="true" UUID="ae583667-470a-4a97-b4c1-6edacc87a3bf" autoIncrement="false" autoIncrementSequenceName="tbempresa_empmunicipio_seq" defaultValue="" name="empmunicipio" nullable="1" physicalName="empmunicipio" precision="100" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL9" populated="true" UUID="ca2b9566-8eda-4102-9054-c6188ff93521" autoIncrement="false" autoIncrementSequenceName="tbempresa_empbairro_seq" defaultValue="" name="empbairro" nullable="1" physicalName="empbairro" precision="100" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL10" populated="true" UUID="1dcb5766-5504-436e-8b73-854cfb800c68" autoIncrement="false" autoIncrementSequenceName="tbempresa_emplogradouro_seq" defaultValue="" name="emplogradouro" nullable="1" physicalName="emplogradouro" precision="100" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL11" populated="true" UUID="c5b1a5b3-103c-43ed-ade2-b48260fd0de3" autoIncrement="false" autoIncrementSequenceName="tbempresa_empcep_seq" defaultValue="" name="empcep" nullable="1" physicalName="empcep" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="5" userDefinedTypeUUID="69fb547f-e14c-4748-9746-4c0e9e94eb52" >
+     <remarks></remarks>
+    </column>
+    <column id="COL12" populated="true" UUID="37f46817-836b-4041-ab5f-49235e2acbec" autoIncrement="false" autoIncrementSequenceName="tbempresa_empnumeroendereco_seq" defaultValue="" name="empnumeroendereco" nullable="1" physicalName="empnumeroendereco" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL13" populated="true" UUID="b3b24170-9778-4a4b-a9c4-e9b75c0fcf84" autoIncrement="false" autoIncrementSequenceName="tbempresa_empcomplementoendereco_seq" defaultValue="" name="empcomplementoendereco" nullable="1" physicalName="empcomplementoendereco" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL14" populated="true" UUID="255aada8-9cc5-436d-9f38-85e1d442aa33" autoIncrement="false" autoIncrementSequenceName="tbempresa_emptelefone_seq" defaultValue="" name="emptelefone" nullable="1" physicalName="emptelefone" precision="16" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL15" populated="true" UUID="cbee6b73-5e40-418d-b941-bfaa5a4b36a1" autoIncrement="false" autoIncrementSequenceName="tbempresa_empnumerofuncionarios_seq" defaultValue="" name="empnumerofuncionarios" nullable="1" physicalName="empnumerofuncionarios" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL16" populated="true" UUID="76be9295-a0b2-4390-8d99-e422b038d5f6" autoIncrement="false" autoIncrementSequenceName="tbempresa_empfatanualestimado_seq" defaultValue="" name="empfatanualestimado" nullable="1" physicalName="empfatanualestimado" precision="15" referenceCount="1" scale="2" sourceDataTypeName="UserDefinedSQLType" type="2" userDefinedTypeUUID="115245ce-612c-4d6a-b559-6dd903dd959a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL17" populated="true" UUID="ef510f71-af27-4760-9cf1-b0f0d2d51b74" autoIncrement="false" autoIncrementSequenceName="tbempresa_empcapitalsocial_seq" defaultValue="" name="empcapitalsocial" nullable="1" physicalName="empcapitalsocial" precision="15" referenceCount="1" scale="2" sourceDataTypeName="UserDefinedSQLType" type="2" userDefinedTypeUUID="115245ce-612c-4d6a-b559-6dd903dd959a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL18" populated="true" UUID="30ae443b-db64-46db-8b1d-075a7a351bd4" autoIncrement="false" autoIncrementSequenceName="tbempresa_empdataabertura_seq" defaultValue="" name="empdataabertura" nullable="1" physicalName="empdataabertura" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="91" userDefinedTypeUUID="ee349be3-6af2-46e1-b305-975f5354b009" >
+     <remarks></remarks>
+    </column>
+    <column id="COL19" populated="true" UUID="f1b5ce42-529e-46ca-b3eb-f76e12ba7e13" autoIncrement="false" autoIncrementSequenceName="tbempresa_empatividadepri_seq" defaultValue="" name="empatividadepri" nullable="1" physicalName="empatividadepri" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB13" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB12" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB14" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX20" populated="true" UUID="6ef89e76-282f-4e6a-ba56-2cf0e96f0151" clustered="false" name="pk_tbempresa" physicalName="pk_tbempresa" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC21" populated="true" UUID="1b812a93-be47-43fd-a8c2-2e4a545e073a" ascendingOrDescending="UNSPECIFIED" column-ref="COL2" name="empcnpj" physicalName="empcnpj" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB22" populated="true" UUID="2038f461-15f3-4119-ad02-99ca2d8d3e53" name="tbempresaatividadesec" objectType="TABLE" physicalName="tbempresaatividadesec" >
+   <remarks></remarks>
+   <folder id="FOLTAB221" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL23" populated="true" UUID="6774443d-33e5-4563-a394-96c2727ebcae" autoIncrement="false" autoIncrementSequenceName="tbempresaatividadesec_empcnpj_seq" defaultValue="" name="empcnpj" nullable="0" physicalName="empcnpj" precision="14" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL24" populated="true" UUID="29ff2f18-6b0b-4ac1-a14c-8ebc69fe954f" autoIncrement="false" autoIncrementSequenceName="tbempresaatividadesec_empatividade_seq" defaultValue="" name="empatividade" nullable="0" physicalName="empatividade" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB223" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB222" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB224" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX25" populated="true" UUID="ba0aff60-8de8-4602-8b6a-68c59fc1fd2d" clustered="false" name="pk_tbempresaatividadesec" physicalName="pk_tbempresaatividade" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC26" populated="true" UUID="7ed94cfb-e79e-44f1-b223-88bac8018c64" ascendingOrDescending="UNSPECIFIED" column-ref="COL23" name="empcnpj" physicalName="empcnpj" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB27" populated="true" UUID="5fcf6cb9-f9f4-43e8-b4b2-d1eb196cd5f7" name="tbsocioempresa" objectType="TABLE" physicalName="tbsocioempresa" >
+   <remarks></remarks>
+   <folder id="FOLTAB271" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL28" populated="true" UUID="98fb7b28-b645-436e-9bcb-6470c26aae51" autoIncrement="false" autoIncrementSequenceName="tbsocioempresa_socnome_seq" defaultValue="" name="socnome" nullable="0" physicalName="socnome" precision="255" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL29" populated="true" UUID="a5e29d1e-2710-442d-aa3d-1f63c7164844" autoIncrement="false" autoIncrementSequenceName="tbsocioempresa_socqualificacao_seq" defaultValue="" name="socqualificacao" nullable="0" physicalName="socqualificacao" precision="100" primaryKeySeq="1" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL30" populated="true" UUID="fade1412-d6da-46da-b73a-2bb43d3e6535" autoIncrement="false" autoIncrementSequenceName="tbempresa_empcnpj_seq" defaultValue="" name="empcnpj" nullable="0" physicalName="empcnpj" precision="14" primaryKeySeq="2" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB273" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB272" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB274" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX31" populated="true" UUID="4172cc28-4fd0-4e89-b5a3-693b39b3f883" clustered="false" name="pk_tbsocioempresa" physicalName="pk_tbsocioempresa" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC32" populated="true" UUID="e9746396-d056-4dd1-97e7-9059985b3515" ascendingOrDescending="UNSPECIFIED" column-ref="COL28" name="socnome" physicalName="socnome" />
+     <index-column id="IDC33" populated="true" UUID="fc8818a6-c10a-4ae7-8680-ef9151c82d4b" ascendingOrDescending="UNSPECIFIED" column-ref="COL29" name="socqualificacao" physicalName="socqualificacao" />
+     <index-column id="IDC34" populated="true" UUID="f38d5fd0-5e74-41d0-ad56-188f6c9ba225" ascendingOrDescending="UNSPECIFIED" column-ref="COL30" name="empcnpj" physicalName="empcnpj" />
+    </index>
+   </folder>
+  </table>
+  <relationships>
+   <relationship id="REL35" populated="true" UUID="9dc99b28-4e36-466c-94ad-029da9866c41" deferrability="7" deleteRule="3" fk-table-ref="TAB22" fkCardinality="7" identifying="true" name="tbempresa_tbempresaatividade_fk" physicalName="tbempresa_tbempresaatividade_fk" pk-table-ref="TAB1" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP36" populated="true" UUID="0fc71ce6-cf04-422e-83cc-dc3243e09060" fk-column-ref="COL23" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL2" />
+   </relationship>
+   <relationship id="REL37" populated="true" UUID="f3c4b1a0-5963-42d9-aed0-7e5e683e06a1" deferrability="7" deleteRule="3" fk-table-ref="TAB27" fkCardinality="7" identifying="true" name="tbempresa_tbsocioempresa_fk" physicalName="tbempresa_tbsocioempresa_fk" pk-table-ref="TAB1" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP38" populated="true" UUID="10989e9e-1b2a-47ed-90a0-92ce33f38d6f" fk-column-ref="COL30" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL2" />
+   </relationship>
+  </relationships>
+ </target-database>
+ <ddl-generator type="ca.sqlpower.architect.ddl.GenericDDLGenerator" allow-connection="true"> </ddl-generator>
+ <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
+ <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
+ <play-pen zoom="1.414213562373095" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
+  <table-pane table-ref="TAB1" x="68" y="20" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB22" x="77" y="383" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB27" x="346" y="28" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-link relationship-ref="REL35" pkConnection="0.44274809160305345" fkConnection="0.3349282296650718" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
+  <table-link relationship-ref="REL37" pkConnection="0.9158576051779935" fkConnection="0.5492957746478874" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="33"/>
+ </play-pen>
+ <critic-manager>
+  <critic-grouping platformType="Generic" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.PrimaryKeyCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.RelationshipMappingTypeCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.EmptyRelationshipCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.AlphaNumericNameCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.AlphaNumericSequenceNameCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SetDefaultOnColumnWithNoDefaultCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SetNullOnNonNullableColumnCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.DuplicateNameCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="DB2" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.DB2UnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="H2" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.H2UnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="HSQLDB" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.HSQLDBUnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="MySQL" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.MySQLCommentCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.MySQLReservedWordsCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.MySQLUnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="Oracle" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.OraclePhysicalNameCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.OracleReservedWordsCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.OracleUnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="PostgreSQL" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.PostgreSQLReservedWordsCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="SQL Server" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SQLServerUnsupportedFeaturesCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SQLServerReservedWordsCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="SQL Server 2000" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SQLServer2000UnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="SQL Server 2005" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SQLServer2005UnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+ </critic-manager>
+ <profiles topNCount="10">
+  </profiles>
+  <olap>
+  </olap>
+  <olap-gui>
+  </olap-gui>
+</architect-project>
