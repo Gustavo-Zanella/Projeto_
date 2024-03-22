@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, make_response, jsonify
 import requests
 import re
 import pandas as pd
@@ -20,7 +20,7 @@ class Banco_Empresa:
         return create_engine(connection)
 
 # Instanciação do banco de dados
-banco = Banco_Empresa('postgres', 'postgres', '127.0.0.1', '5432', 'zanella').get_engine()
+banco = Banco_Empresa('postgres', 'postgres', '192.168.15.83', '5432', 'zanella').get_engine()
 
 # Função para verificar se o CNPJ já está cadastrado no banco de dados
 def cnpj_existe(cnpj):
@@ -34,12 +34,21 @@ def cadastrar_empresa():
     df = pd.read_sql("SELECT * FROM PUBLIC.TBEMPRESA", banco)
     empresas = df.to_dict(orient='records')
     print(empresas)
-    return render_template('cadastraempresa.html', empresas=empresas)
+    return render_template('cadastraempresa.html', empresas=empresas, nomevendedor='Jaime')
 
 # Rota para login
 @app.route('/')
 def login():
     return render_template('login.html')
+
+@app.route('/api/dados', methods=['GET'])
+def get_dados():
+    empresas = "SELECT * FROM PUBLIC.TBEMPRESA"
+    df = pd.read_sql(empresas, banco)
+
+    print(df.to_dict)
+
+    return make_response(jsonify(df.to_json(orient='records', lines=True)))
 
 # Rota para autenticar usuário
 @app.route('/autenticar', methods=['POST'])
@@ -62,22 +71,44 @@ def verificar_url(url):
 @app.route('/verificar', methods=['POST'])
 def verificar_empresa_existe():
     cnpj = re.sub(r'\D', '', request.form['campo'])
-    
-    if 'cadastrar' in request.form:
-        url = f'https://receitaws.com.br/v1/cnpj/{cnpj}'
-        session['url_api'] = url
-        
-        if verificar_url(url) and not cnpj_existe(cnpj):
-            session['cnpj'] = cnpj
-            inserir_empresa()
-            return redirect('/cadastrar_empresa')  
-        else:
-            return redirect('/cadastrar_empresa')
+    session['cnpj'] = cnpj
+    url = f'https://receitaws.com.br/v1/cnpj/{cnpj}'
+    session['url_api'] = url
+
+    try:
+        if 'cadastrar' in request.form:
+            if verificar_url(url) and not cnpj_existe(cnpj):
+                inserir_empresa()
+                return redirect('/cadastrar_empresa')  
+            else:
+                return redirect('/cadastrar_empresa')
+        elif 'visualizar' in request.form:
+            if cnpj_existe(cnpj):
+                return redirect('/visualizar')
+            else:
+                return redirect('/cadastrar_empresa')
+    except:
+        return redirect('/cadastrar_empresa')
+
 
 # Rota para CRUD de empresa
-@app.route('/crud')
-def crud_empresa():
-    return render_template('crud.html')
+@app.route('/visualizar')
+def visualizar_empresa():
+    return render_template('visualizar.html', cnpj=cnpj,
+                                              situacao=situacao,
+                                              tipo=tipo,
+                                              razao_social=razao_social,
+                                              nome_fantasia=nome_fantasia,
+                                              estado=estado,
+                                              endereco=endereco,
+                                              natureza_juridica=natureza_juridica,
+                                              porte=porte,
+                                              atividade_principal=atividade_principal,
+                                              telefone=telefone,
+                                              numero_funcionarios=numero_funcionarios,
+                                              faturamento_anual=faturamento_anual,
+                                              vendedor_responsavel=vendedor_responsavel
+                                              )
 
 def inserir_empresa():
     rf_url = session.get('url_api', None)

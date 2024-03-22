@@ -92,7 +92,7 @@
             </div>
             <button type="submit" id="cadastrar" name="cadastrar">Cadastrar</button>
             <button type="submit" id="alterar" name="alterar">Alterar</button>
-            <button type="submit" id="consultar" name="consultar">Consultar</button>
+            <button type="submit" id="visualizar" name="visualizar">Consultar</button>
         </form>
 
         <h2 style="margin-top: 40px;">Empresas Cadastradas</h2>
@@ -104,18 +104,18 @@
                     <th>Abertura</th>
                     <th>Porte</th>
                     <th>Situação</th>
-                    <!-- Adicione outras colunas conforme necessário -->
+                    <th>Vendedor</th>
                 </tr>
             </thead>
             <tbody>
                 {% for empresa in empresas %}
-                <tr>
+                <tr> 
                     <td>{{ empresa.empcnpj }}</td>
                     <td>{{ empresa.empnomerazao }}</td>
                     <td>{{ empresa.empdataabertura }}</td>
                     <td>{{ empresa.empporte }}</td>
                     <td>{{ empresa.empsituacao }}</td>
-                    <!-- Adicione outras colunas conforme necessário -->
+                    <td>{{ empresa.empnomevendedor }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
