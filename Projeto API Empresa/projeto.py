@@ -20,7 +20,13 @@ class Banco_Empresa:
         return create_engine(connection)
 
 # Instanciação do banco de dados
-banco = Banco_Empresa('postgres', 'postgres', '192.168.15.83', '5432', 'zanella').get_engine()
+banco = Banco_Empresa('postgres', 'postgres', '127.0.0.1', '5432', 'zanella').get_engine()
+
+def coalesce(valor):
+    if (valor == '') or (valor == '0'):
+        return 'Nulo'
+    else:
+        return valor
 
 # Função para verificar se o CNPJ já está cadastrado no banco de dados
 def cnpj_existe(cnpj):
@@ -33,8 +39,7 @@ def cnpj_existe(cnpj):
 def cadastrar_empresa():
     df = pd.read_sql("SELECT * FROM PUBLIC.TBEMPRESA", banco)
     empresas = df.to_dict(orient='records')
-    print(empresas)
-    return render_template('cadastraempresa.html', empresas=empresas, nomevendedor='Jaime')
+    return render_template('cadastraempresa.html', empresas=empresas)
 
 # Rota para login
 @app.route('/')
@@ -90,25 +95,16 @@ def verificar_empresa_existe():
     except:
         return redirect('/cadastrar_empresa')
 
+@app.route('/voltar_cadastro', methods=['GET'])
+def voltar_cadastro():
+    return redirect('/cadastrar_empresa')
 
 # Rota para CRUD de empresa
 @app.route('/visualizar')
 def visualizar_empresa():
-    return render_template('visualizar.html', cnpj=cnpj,
-                                              situacao=situacao,
-                                              tipo=tipo,
-                                              razao_social=razao_social,
-                                              nome_fantasia=nome_fantasia,
-                                              estado=estado,
-                                              endereco=endereco,
-                                              natureza_juridica=natureza_juridica,
-                                              porte=porte,
-                                              atividade_principal=atividade_principal,
-                                              telefone=telefone,
-                                              numero_funcionarios=numero_funcionarios,
-                                              faturamento_anual=faturamento_anual,
-                                              vendedor_responsavel=vendedor_responsavel
-                                              )
+    df = pd.read_sql(f"SELECT * FROM PUBLIC.TBEMPRESA WHERE EMPCNPJ = '{session.get('cnpj', None)}'", banco)
+    empresas_ = df.to_dict(orient='records')
+    return render_template('visualizar.html', empresas=empresas_)    
 
 def inserir_empresa():
     rf_url = session.get('url_api', None)

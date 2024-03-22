@@ -49,69 +49,79 @@
 <body>
     <div class="container">
         <h2>Consulta de Empresas</h2>
-        <form method="GET" action="/visualizar">
+        <form method="GET" action="/cadastrar_empresa">
+        {% for empresa in empresas %}
             <div class="input-field">
                 <label for="cnpj">CNPJ:</label>
-                <input type="text" id="cnpj" name="cnpj" value= {{cnpj}} readonly placeholder="Digite o CNPJ">
+                <input type="text" id="cnpj" name="cnpj" value={{empresa.empcnpj}} readonly placeholder="Digite o CNPJ">
             </div>
             <div class="input-field">
                 <label for="situacao">Situação:</label>
-                <input type="text" id="situacao" name="situacao" value= {{situacao}} readonly placeholder="Digite a situacão">
+                <input type="text" id="situacao" name="situacao" value= {{empresa.empsituacao}} readonly placeholder="Digite a situacão">
                 </select>
             </div>
             <div class="input-field">
                 <label for="tipo">Tipo:</label>
-                <input type="text" id="tipo" name="tipo" value= {{tipo}} readonly placeholder="Digite o tipo">
+                <input type="text" id="tipo" name="tipo" value= {{empresa.emptipo}} readonly placeholder="Digite o tipo">
                 </select>
             </div>
             <div class="input-field">
                 <label for="razao_social">Razão Social:</label>
-                <input type="text" id="razao_social" name="razao_social" value= {{razao_social}} readonly placeholder="Digite a Razão Social">
+                <input type="text" id="razao_social" name="razao_social" value= {{empresa.empnomerazao or 'null'}} readonly placeholder="Digite a Razão Social">
             </div>
             <div class="input-field">
                 <label for="nome_fantasia">Nome Fantasia:</label>
-                <input type="text" id="nome_fantasia" name="nome_fantasia"  value= {{nome_fantasia}} readonly placeholder="Digite o Nome Fantasia">
+                <input type="text" id="nome_fantasia" name="nome_fantasia"  value= {{empresa.empnomefantasia or 'null'}} readonly placeholder="Digite o Nome Fantasia">
             </div>
             <div class="input-field">
                 <label for="estado">Estado:</label>
-                <input type="text" id="estado" name="estado" value= {{estado}} readonly placeholder="Digite o Estado">
+                <input type="text" id="estado" name="estado" value= {{empresa.empuf or 'null'}} readonly placeholder="Digite o Estado">
             </div>
             <div class="input-field">
                 <label for="municipio">Município:</label>
-                <input type="text" id="municipio" name="municipio" value= {{municipio}} readonly placeholder="Digite o Município">
+                <input type="text" id="municipio" name="municipio" value= {{empresa.empmunicipio or 'null'}} readonly placeholder="Digite o Município">
             </div>
             <div class="input-field">
-                <label for="endereco">Endereço:</label>
-                <input type="text" id="endereco" name="endereco" value= {{endereco}} readonly placeholder="Digite o Endereço">
+                <label for="Bairro">Bairro:</label>
+                <input type="text" id="bairro" name="Bairro" value= {{empresa.empbairro or 'null'}} readonly placeholder="Digite o Endereço">
             </div>
+            <div class="input-field">
+                <label for="Logradour">Logradouro:</label>
+                <input type="text" id="logradour" name="Logradouro" value= {{empresa.emplogradouro or 'null'}} readonly placeholder="Digite o Endereço">
+            </div>
+            <div class="input-field">
+                <label for="cep">Cep:</label>
+                <input type="text" id="cep" name="CEP" value= {{empresa.empcep or 'null'}} readonly placeholder="Digite o Endereço">
+            </div>                        
             <div class="input-field">
                 <label for="natureza_juridica">Natureza Jurídica:</label>
-                <input type="text" id="natureza_juridica" name="natureza_juridica" value= {{natureza_juridica}} readonly placeholder="Digite a Natureza Jurídica">
+                <input type="text" id="natureza_juridica" name="natureza_juridica" value= {{empresa.empnaturezajuridica or 'null'}} readonly placeholder="Digite a Natureza Jurídica">
             </div>
             <div class="input-field">
                 <label for="porte">Porte:</label>
-                <input type="text" id="porte" name="porte" value= {{porte}} readonly placeholder="Digite o Porte">
+                <input type="text" id="porte" name="porte" value= {{empresa.empporte or 'null'}} readonly placeholder="Digite o Porte">
             </div>
             <div class="input-field">
                 <label for="atividade_principal">Atividade Principal:</label>
-                <input type="text" id="atividade_principal" name="atividade_principal" value= {{atividade_principal}} readonly placeholder="Digite a Atividade Principal">
+                <input type="text" id="atividade_principal" name="atividade_principal" value= {{empresa.empatividadepri or 'null'}} readonly placeholder="Digite a Atividade Principal">
             </div>
             <div class="input-field">
                 <label for="telefone">Telefone:</label>
-                <input type="text" id="telefone" name="telefone" value= {{telefone}} readonly placeholder="Digite o Telefone">
+                <input type="text" id="telefone" name="telefone" value= {{empresa.emptelefone or 'null'}} readonly placeholder="Digite o Telefone">
             </div>
             <div class="input-field">
                 <label for="numero_funcionarios">Número de Funcionários:</label>
-                <input type="text" id="numero_funcionarios" name="numero_funcionarios" value= {{numero_funcionarios}} readonly placeholder="Digite o Número de Funcionários">
+                <input type="text" id="numero_funcionarios" name="numero_funcionarios" value= {{empresa.empnumerofuncionarios or 'null'}} readonly placeholder="Digite o Número de Funcionários">
             </div>
             <div class="input-field">
                 <label for="faturamento_anual">Faturamento Anual Estimado:</label>
-                <input type="text" id="faturamento_anual" name="faturamento_anual" value= {{faturamento_anual}} readonly placeholder="Digite o Faturamento Anual Estimado">
+                <input type="text" id="faturamento_anual" name="faturamento_anual" value= {{empresa.empfatanualestimado or 'null'}} readonly placeholder="Digite o Faturamento Anual Estimado">
             </div>
             <div class="input-field">
                 <label for="vendedor_responsavel">Vendedor Responsável:</label>
-                <input type="text" id="vendedor_responsavel" name="vendedor_responsavel" value= {{vendedor_responsavel}} readonly placeholder="Digite o Vendedor Responsável">
+                <input type="text" id="vendedor_responsavel" name="vendedor_responsavel" value= {{empresa.empnomevendedor or 'null'}} readonly placeholder="Digite o Vendedor Responsável">
             </div>
+            {% endfor %}
             <div class="input-field">
                 <input type="submit" value="Voltar">
             </div>
