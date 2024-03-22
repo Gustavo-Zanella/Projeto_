@@ -6,7 +6,7 @@ from sqlalchemy import create_engine
 
 app = Flask(__name__)
 app.secret_key = 'vasco'
-# Classe para conexão com banco da empresa
+
 class Banco_Empresa:
     def __init__(self, username, password, host, port, name):
         self.username = username
@@ -19,7 +19,6 @@ class Banco_Empresa:
         connection = f'postgresql://{self.username}:{self.password}@{self.host}:{self.port}/{self.name}'
         return create_engine(connection)
 
-# Instanciação do banco de dados
 banco = Banco_Empresa('postgres', 'postgres', '127.0.0.1', '5432', 'zanella').get_engine()
 
 def coalesce(valor):
@@ -28,20 +27,17 @@ def coalesce(valor):
     else:
         return valor
 
-# Função para verificar se o CNPJ já está cadastrado no banco de dados
 def cnpj_existe(cnpj):
     sql_verifica_cnpj = f"SELECT * FROM PUBLIC.TBEMPRESA WHERE EMPCNPJ = '{cnpj}'"
     df = pd.read_sql_query(sql_verifica_cnpj, banco)
     return not df.empty
 
-# Rota para cadastrar empresa
 @app.route('/cadastrar_empresa')
 def cadastrar_empresa():
     df = pd.read_sql("SELECT * FROM PUBLIC.TBEMPRESA", banco)
     empresas = df.to_dict(orient='records')
     return render_template('cadastraempresa.html', empresas=empresas)
 
-# Rota para login
 @app.route('/')
 def login():
     return render_template('login.html')
@@ -55,15 +51,13 @@ def get_dados():
 
     return make_response(jsonify(df.to_json(orient='records', lines=True)))
 
-# Rota para autenticar usuário
 @app.route('/autenticar', methods=['POST'])
 def autenticar_usuario():
     if '123' == request.form['password']:
         return redirect('/cadastrar_empresa')
     else:
         return redirect('/')    
-
-# Função para verificar se a URL é válida
+    
 def verificar_url(url):
     try:
         req = requests.get(url)
@@ -72,7 +66,6 @@ def verificar_url(url):
     except:
         return False
 
-# Rota para verificar se a empresa existe e decidir onde redirecionar
 @app.route('/verificar', methods=['POST'])
 def verificar_empresa_existe():
     cnpj = re.sub(r'\D', '', request.form['campo'])
@@ -92,19 +85,29 @@ def verificar_empresa_existe():
                 return redirect('/visualizar')
             else:
                 return redirect('/cadastrar_empresa')
+        else:
+           return redirect('/alterar') 
     except:
         return redirect('/cadastrar_empresa')
 
-@app.route('/voltar_cadastro', methods=['GET'])
+@app.route('/voltar_cadastro', methods=['POST'])
 def voltar_cadastro():
-    return redirect('/cadastrar_empresa')
+    if 'Alterar' in request.form:
+        return redirect('/cadastrar_empresa')
+    else:
+        return redirect('/cadastrar_empresa')
 
-# Rota para CRUD de empresa
 @app.route('/visualizar')
 def visualizar_empresa():
     df = pd.read_sql(f"SELECT * FROM PUBLIC.TBEMPRESA WHERE EMPCNPJ = '{session.get('cnpj', None)}'", banco)
     empresas_ = df.to_dict(orient='records')
     return render_template('visualizar.html', empresas=empresas_)    
+
+@app.route('/alterar')
+def alterar_empresa():
+    df = pd.read_sql(f"SELECT * FROM PUBLIC.TBEMPRESA WHERE EMPCNPJ = '{session.get('cnpj', None)}'", banco)
+    empresas_ = df.to_dict(orient='records')
+    return render_template('alterar.html', empresas=empresas_) 
 
 def inserir_empresa():
     rf_url = session.get('url_api', None)
@@ -136,10 +139,8 @@ def inserir_empresa():
         'empfatanualestimado' : '0'
     }
 
-    # Criar um DataFrame com os dados da empresa
     df_empresa = pd.DataFrame([dados_empresa])
 
-    # Criar uma tabela para a empresa no banco de dados e inserir os dados
     table_name_empresa = 'tbempresa'
     df_empresa.to_sql(table_name_empresa, banco, if_exists='append', index=False)
 app.run()

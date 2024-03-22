@@ -49,7 +49,7 @@
 <body>
     <div class="container">
         <h2>Consulta de Empresas</h2>
-        <form method="GET" action="/cadastrar_empresa">
+        <form method="POST" action="/voltar_cadastro">
         {% for empresa in empresas %}
             <div class="input-field">
                 <label for="cnpj">CNPJ:</label>
@@ -124,7 +124,7 @@
             {% endfor %}
             <div class="input-field">
                 <input type="submit" value="Voltar">
-                <input type="submit" value="Alterar">
+                <input type="submit" name="Alterar" id="Alterar" value="Alterar" >
             </div>
         </form>
     </div>
