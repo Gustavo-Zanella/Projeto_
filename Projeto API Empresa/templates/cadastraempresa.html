@@ -14,7 +14,7 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 50px auto;
             padding: 20px;
             background-color: #fff;
@@ -32,7 +32,7 @@
         }
 
         input[type="text"] {
-            width: 100%;
+            width: 30%;
             padding: 10px;
             border-radius: 5px;
             border: 1px solid #ccc;
@@ -60,19 +60,31 @@
         }
 
         th, td {
-            padding: 8px;
+            padding: 12px;
             border-bottom: 1px solid #ddd;
             text-align: left;
+            border-right: 1px solid #ddd; /* Adiciona borda direita */
         }
 
         th {
             background-color: #f2f2f2;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-right: none; /* Remove borda direita do último cabeçalho */
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tbody td:last-child {
+            border-right: none; /* Remove borda direita da última coluna */
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Cadastrar Empresa</h2>
+        <h2 style="margin-bottom: 30px;">Cadastrar Empresa</h2>
         <form method="POST" action="/verificar">
             <div class="input-field">
                 <label for="campo">CNPJ:</label>
@@ -83,13 +95,13 @@
             <button type="submit" id="consultar" name="consultar">Consultar</button>
         </form>
 
-        <h2>Empresas Cadastradas</h2>
+        <h2 style="margin-top: 40px;">Empresas Cadastradas</h2>
         <table>
             <thead>
                 <tr>
                     <th>CNPJ</th>
-                    <th>Razão Social / Nome</th>
-                    <th>Data de Abertura</th>
+                    <th>Nome</th>
+                    <th>Abertura</th>
                     <th>Porte</th>
                     <th>Situação</th>
                     <!-- Adicione outras colunas conforme necessário -->
@@ -98,11 +110,11 @@
             <tbody>
                 {% for empresa in empresas %}
                 <tr>
-                    <td>{{ empresa.cnpj }}</td>
-                    <td>{{ empresa.nomerazao }}</td>
-                    <td>{{ empresa.data_abertura }}</td>
-                    <td>{{ empresa.porte }}</td>
-                    <td>{{ empresa.situacao }}</td>
+                    <td>{{ empresa.empcnpj }}</td>
+                    <td>{{ empresa.empnomerazao }}</td>
+                    <td>{{ empresa.empdataabertura }}</td>
+                    <td>{{ empresa.empporte }}</td>
+                    <td>{{ empresa.empsituacao }}</td>
                     <!-- Adicione outras colunas conforme necessário -->
                 </tr>
                 {% endfor %}

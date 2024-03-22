@@ -31,9 +31,10 @@ def cnpj_existe(cnpj):
 # Rota para cadastrar empresa
 @app.route('/cadastrar_empresa')
 def cadastrar_empresa():
-    df = pd.read_sql("SELECRT * FROM PUBLIC.TBEMPRESA", banco)
+    df = pd.read_sql("SELECT * FROM PUBLIC.TBEMPRESA", banco)
     empresas = df.to_dict(orient='records')
-    return render_template('cadastraempresa.html')
+    print(empresas)
+    return render_template('cadastraempresa.html', empresas=empresas)
 
 # Rota para login
 @app.route('/')
@@ -68,18 +69,17 @@ def verificar_empresa_existe():
         
         if verificar_url(url) and not cnpj_existe(cnpj):
             session['cnpj'] = cnpj
-            return redirect('/crud')  
+            inserir_empresa()
+            return redirect('/cadastrar_empresa')  
         else:
             return redirect('/cadastrar_empresa')
 
 # Rota para CRUD de empresa
 @app.route('/crud')
 def crud_empresa():
-    inserir_empresa()
     return render_template('crud.html')
 
 def inserir_empresa():
-
     rf_url = session.get('url_api', None)
     cnpj = session.get('cnpj', None)
     data = requests.get(rf_url, timeout=5).json()
@@ -116,3 +116,4 @@ def inserir_empresa():
     table_name_empresa = 'tbempresa'
     df_empresa.to_sql(table_name_empresa, banco, if_exists='append', index=False)
 app.run()
+
