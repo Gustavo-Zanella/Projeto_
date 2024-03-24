@@ -93,7 +93,11 @@ def voltar_alterar():
         cnpj = session.get('cnpj', None)
         vendedor = request.form['vendedor_responsavel']
         faturamento = request.form['faturamento_anual']
-        funcionarios = request.form['numero_funcionarios']    
+        if faturamento == 'null':
+            faturamento = '0'
+        funcionarios = request.form['numero_funcionarios']
+        if funcionarios == 'null':
+            funcionarios = '0'
         if alterar_empresa(cnpj, vendedor, faturamento, funcionarios):
             return redirect('/cadastrar_empresa')
         else:
