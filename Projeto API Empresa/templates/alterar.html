@@ -49,7 +49,7 @@
 <body>
     <div class="container">
         <h2>Consulta de Empresas</h2>
-        <form method="POST" action="/voltar_cadastro">
+        <form method="POST" action="/voltar_alterar">
         {% for empresa in empresas %}
             <div class="input-field">
                 <label for="cnpj">CNPJ:</label>
@@ -111,15 +111,15 @@
             </div>
             <div class="input-field">
                 <label for="numero_funcionarios">Número de Funcionários:</label>
-                <input type="text" id="numero_funcionarios" name="numero_funcionarios" value= {{empresa.empnumerofuncionarios or 'null'}} readonly placeholder="Digite o Número de Funcionários">
+                <input type="text" id="numero_funcionarios" name="numero_funcionarios" value= {{empresa.empnumerofuncionarios or 'null'}} placeholder="Digite o Número de Funcionários">
             </div>
             <div class="input-field">
                 <label for="faturamento_anual">Faturamento Anual Estimado:</label>
-                <input type="text" id="faturamento_anual" name="faturamento_anual" value= {{empresa.empfatanualestimado or 'null'}} readonly placeholder="Digite o Faturamento Anual Estimado">
+                <input type="text" id="faturamento_anual" name="faturamento_anual" value= {{empresa.empfatanualestimado or 'null'}} placeholder="Digite o Faturamento Anual Estimado">
             </div>
             <div class="input-field">
                 <label for="vendedor_responsavel">Vendedor Responsável:</label>
-                <input type="text" id="vendedor_responsavel" name="vendedor_responsavel" value= {{empresa.empnomevendedor or 'null'}} readonly placeholder="Digite o Vendedor Responsável">
+                <input type="text" id="vendedor_responsavel" name="vendedor_responsavel" value= {{empresa.empnomevendedor or 'null'}} placeholder="Digite o Vendedor Responsável">
             </div>
             {% endfor %}
             <div class="input-field">

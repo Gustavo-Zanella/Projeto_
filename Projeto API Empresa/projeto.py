@@ -2,10 +2,14 @@ from flask import Flask, render_template, request, redirect, session, make_respo
 import requests
 import re
 import pandas as pd
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, update
+from sqlalchemy.orm import sessionmaker, Session
+
+from empresas import Empresa
+
 
 app = Flask(__name__)
-app.secret_key = 'vasco'
+app.secret_key = 'SK'
 
 class Banco_Empresa:
     def __init__(self, username, password, host, port, name):
@@ -21,11 +25,7 @@ class Banco_Empresa:
 
 banco = Banco_Empresa('postgres', 'postgres', '127.0.0.1', '5432', 'zanella').get_engine()
 
-def coalesce(valor):
-    if (valor == '') or (valor == '0'):
-        return 'Nulo'
-    else:
-        return valor
+Session = sessionmaker(bind=banco) 
 
 def cnpj_existe(cnpj):
     sql_verifica_cnpj = f"SELECT * FROM PUBLIC.TBEMPRESA WHERE EMPCNPJ = '{cnpj}'"
@@ -90,12 +90,35 @@ def verificar_empresa_existe():
     except:
         return redirect('/cadastrar_empresa')
 
-@app.route('/voltar_cadastro', methods=['POST'])
-def voltar_cadastro():
+@app.route('/voltar_alterar', methods=['POST'])
+def voltar_alterar():
     if 'Alterar' in request.form:
-        return redirect('/cadastrar_empresa')
+        cnpj = session.get('cnpj', None)
+        vendedor = request.form['vendedor_responsavel']
+        faturamento = request.form['faturamento_anual']
+        funcionarios = request.form['numero_funcionarios']    
+        if alterar_empresa(cnpj, vendedor, faturamento, funcionarios):
+            return redirect('/cadastrar_empresa')
+        else:
+            return "Erro ao alterar a empresa"
     else:
         return redirect('/cadastrar_empresa')
+
+def alterar_empresa(cnpj, vendedor, faturamento, funcionarios):
+    try:    
+        session = Session()
+        session.query(Empresa).\
+            filter(Empresa.empcnpj == cnpj).\
+            update({Empresa.empnumerofuncionarios: funcionarios,
+                    Empresa.empfatanualestimado: faturamento,
+                    Empresa.empvendedor: vendedor,})
+        session.commit()
+        return True
+    except:
+        session.rollback()
+        return False
+    finally:
+        session.close()
 
 @app.route('/visualizar')
 def visualizar_empresa():
@@ -104,7 +127,7 @@ def visualizar_empresa():
     return render_template('visualizar.html', empresas=empresas_)    
 
 @app.route('/alterar')
-def alterar_empresa():
+def alterar_empresa_page():
     df = pd.read_sql(f"SELECT * FROM PUBLIC.TBEMPRESA WHERE EMPCNPJ = '{session.get('cnpj', None)}'", banco)
     empresas_ = df.to_dict(orient='records')
     return render_template('alterar.html', empresas=empresas_) 
@@ -143,5 +166,6 @@ def inserir_empresa():
 
     table_name_empresa = 'tbempresa'
     df_empresa.to_sql(table_name_empresa, banco, if_exists='append', index=False)
+
 app.run()
 
