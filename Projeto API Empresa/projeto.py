@@ -50,14 +50,7 @@ def cadastrar_empresa():
 
 @app.route('/')
 def login():
-    return render_template('login.html')
-
-@app.route('/autenticar', methods=['POST'])
-def autenticar_usuario():
-    if '123' == request.form['password']:
-        return redirect('/cadastrar_empresa')
-    else:
-        return redirect('/')    
+    return redirect('/cadastrar_empresa') 
     
 def verificar_url(url):
     try:
@@ -177,18 +170,14 @@ def connect_db():
 
 @app.route('/api/empresas', methods=['GET'])
 def get_empresas():
-    # Conectar ao banco de dados
     conn = connect_db()
     cursor = conn.cursor()
 
-    # Consulta SQL para obter todas as empresas
     query = "SELECT * FROM TBempresa"
     cursor.execute(query)
     
-    # Recuperar todas as linhas do resultado da consulta
     empresas = cursor.fetchall()
 
-    # Converter as empresas em uma lista de dicionários
     empresas_list = []
     for empresa in empresas:
         empresa_dict = {
@@ -220,11 +209,9 @@ def get_empresas():
 
         empresas_list.append(empresa_dict)
 
-    # Fechar cursor e conexão com o banco de dados
     cursor.close()
     conn.close()
 
-    # Retornar os dados das empresas em formato JSON
     return make_response(jsonify(empresas_list))
 
 app.run()
