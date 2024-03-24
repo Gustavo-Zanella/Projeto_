@@ -3,3 +3,135 @@
 484  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
 484  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
 547  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+0    [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ArchitectUtils  - Log4J configured successfully
+1320 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+1527 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+1528 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+1578 [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+23393 [Thread-5] ERROR ca.sqlpower.architect.swingui.action.CheckForUpdateAction  - Fail to retrieve current version number!
+48604 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+CREATE TABLE public.tbempresa (
+                empcnpj VARCHAR(14) NOT NULL,
+                empnaturezajuridica VARCHAR(150),
+                empnomerazao VARCHAR(255),
+                empnomefantasia VARCHAR(255),
+                empsituacao VARCHAR(150),
+                emptipo VARCHAR(15),
+                empuf VARCHAR(2),
+                empmunicipio VARCHAR(100),
+                empvendedor VARCHAR(255) NOT NULL,
+                empemail VARCHAR(150) NOT NULL,
+                empbairro VARCHAR(100),
+                emplogradouro VARCHAR(100),
+                empcep VARCHAR(10) NOT NULL,
+                empnumeroendereco VARCHAR,
+                empcomplementoendereco VARCHAR,
+                emptelefone VARCHAR(16),
+                empstatus VARCHAR(10),
+                empporte VARCHAR(15),
+                empfatanualestimado NUMERIC(15,2),
+                empcapitalsocial NUMERIC(15,2),
+                empnumerofuncionarios INTEGER,
+                empdataabertura DATE,
+                empatividadepri VARCHAR,
+                CONSTRAINT pk_tbempresa PRIMARY KEY (empcnpj)
+)
+48605 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON TABLE public.tbempresa IS 'Tabela Para Armazenar Empresas e Suas Informações.'
+48710 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.SQLScriptDialog  - The list size is :2
+263080 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+CREATE TABLE public.tbempresa (
+                empcnpj VARCHAR(14) NOT NULL,
+                empnaturezajuridica VARCHAR(150),
+                empnomerazao VARCHAR(255),
+                empnomefantasia VARCHAR(255),
+                empsituacao VARCHAR(150),
+                emptipo VARCHAR(15),
+                empuf VARCHAR(2),
+                empmunicipio VARCHAR(100),
+                empvendedor VARCHAR(255),
+                empemail VARCHAR(150) NOT NULL,
+                empbairro VARCHAR(100),
+                emplogradouro VARCHAR(100),
+                empcep VARCHAR(10) NOT NULL,
+                empnumeroendereco VARCHAR,
+                empcomplementoendereco VARCHAR,
+                emptelefone VARCHAR(16),
+                empstatus VARCHAR(10),
+                empporte VARCHAR(15),
+                empfatanualestimado NUMERIC(15,2),
+                empcapitalsocial NUMERIC(15,2),
+                empnumerofuncionarios INTEGER,
+                empdataabertura DATE,
+                empatividadepri VARCHAR,
+                CONSTRAINT pk_tbempresa PRIMARY KEY (empcnpj)
+)
+263081 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON TABLE public.tbempresa IS 'Tabela Para Armazenar Empresas e Suas Informações.'
+263081 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.SQLScriptDialog  - The list size is :2
+312610 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+CREATE TABLE public.tbempresa (
+                empcnpj VARCHAR(14) NOT NULL,
+                empnaturezajuridica VARCHAR(150),
+                empnomerazao VARCHAR(255),
+                empnomefantasia VARCHAR(255),
+                empsituacao VARCHAR(150),
+                emptipo VARCHAR(15),
+                empuf VARCHAR(2),
+                empmunicipio VARCHAR(100),
+                empvendedor VARCHAR(255),
+                empemail VARCHAR(150),
+                empbairro VARCHAR(100),
+                emplogradouro VARCHAR(100),
+                empcep VARCHAR(10),
+                empnumeroendereco VARCHAR,
+                empcomplementoendereco VARCHAR,
+                emptelefone VARCHAR(16),
+                empstatus VARCHAR(10),
+                empporte VARCHAR(15),
+                empfatanualestimado NUMERIC(15,2),
+                empcapitalsocial NUMERIC(15,2),
+                empnumerofuncionarios INTEGER,
+                empdataabertura DATE,
+                empatividadepri VARCHAR,
+                CONSTRAINT pk_tbempresa PRIMARY KEY (empcnpj)
+)
+312611 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON TABLE public.tbempresa IS 'Tabela Para Armazenar Empresas e Suas Informações.'
+312611 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.SQLScriptDialog  - The list size is :2
+0    [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ArchitectUtils  - Log4J configured successfully
+575  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+635  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+635  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+664  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+22170 [Thread-5] ERROR ca.sqlpower.architect.swingui.action.CheckForUpdateAction  - Fail to retrieve current version number!
+42660 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+CREATE TABLE public.tbempresa (
+                empcnpj VARCHAR(14) NOT NULL,
+                empnaturezajuridica VARCHAR(150),
+                empnomerazao VARCHAR(255),
+                empnomefantasia VARCHAR(255),
+                empvendedor VARCHAR(255),
+                empsituacao VARCHAR(150),
+                emptipo VARCHAR(15),
+                empuf VARCHAR(2),
+                empmunicipio VARCHAR(100),
+                empemail VARCHAR(150),
+                empbairro VARCHAR(100),
+                emplogradouro VARCHAR(100),
+                empcep VARCHAR(10),
+                empnumeroendereco VARCHAR,
+                empcomplementoendereco VARCHAR,
+                emptelefone VARCHAR(16),
+                empstatus VARCHAR(10),
+                empporte VARCHAR(15),
+                empfatanualestimado NUMERIC(15,2),
+                empcapitalsocial NUMERIC(15,2),
+                empnumerofuncionarios INTEGER,
+                empdataabertura DATE,
+                empatividadepri VARCHAR,
+                CONSTRAINT pk_tbempresa PRIMARY KEY (empcnpj)
+)
+42661 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+COMMENT ON TABLE public.tbempresa IS 'Tabela Para Armazenar Empresas e Suas Informações.'
+42664 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.SQLScriptDialog  - The list size is :2

@@ -2,14 +2,24 @@ from flask import Flask, render_template, request, redirect, session, make_respo
 import requests
 import re
 import pandas as pd
-from sqlalchemy import create_engine, update
+from sqlalchemy import create_engine, update, Column, String, Integer
 from sqlalchemy.orm import sessionmaker, Session
-
-from empresas import Empresa
-
+from sqlalchemy.ext.declarative import declarative_base
+import psycopg2 as pg
 
 app = Flask(__name__)
 app.secret_key = 'SK'
+
+Base = declarative_base()
+
+class Empresa(Base):
+    __tablename__ = 'tbempresa'
+
+    empcnpj = Column(String, primary_key=True)
+    empnumerofuncionarios = Column(String)
+    empfatanualestimado = Column(String)
+    empvendedor = Column(String)
+
 
 class Banco_Empresa:
     def __init__(self, username, password, host, port, name):
@@ -41,15 +51,6 @@ def cadastrar_empresa():
 @app.route('/')
 def login():
     return render_template('login.html')
-
-@app.route('/api/dados', methods=['GET'])
-def get_dados():
-    empresas = "SELECT * FROM PUBLIC.TBEMPRESA"
-    df = pd.read_sql(empresas, banco)
-
-    print(df.to_dict)
-
-    return make_response(jsonify(df.to_json(orient='records', lines=True)))
 
 @app.route('/autenticar', methods=['POST'])
 def autenticar_usuario():
@@ -86,9 +87,12 @@ def verificar_empresa_existe():
             else:
                 return redirect('/cadastrar_empresa')
         else:
-           return redirect('/alterar') 
+            if cnpj_existe(cnpj):
+                return redirect('/alterar')
+            else:
+                return redirect('/cadastrar_empresa')
     except:
-        return redirect('/cadastrar_empresa')
+        return "Erro ao Inserir Empresa"
 
 @app.route('/voltar_alterar', methods=['POST'])
 def voltar_alterar():
@@ -111,7 +115,7 @@ def alterar_empresa(cnpj, vendedor, faturamento, funcionarios):
             filter(Empresa.empcnpj == cnpj).\
             update({Empresa.empnumerofuncionarios: funcionarios,
                     Empresa.empfatanualestimado: faturamento,
-                    Empresa.empvendedor: vendedor,})
+                    Empresa.empvendedor: vendedor})
         session.commit()
         return True
     except:
@@ -166,6 +170,62 @@ def inserir_empresa():
 
     table_name_empresa = 'tbempresa'
     df_empresa.to_sql(table_name_empresa, banco, if_exists='append', index=False)
+
+def connect_db():
+    connection = pg.connect(dbname='zanella', user='postgres', host='127.0.0.1', password='postgres', port='5432')
+    return connection
+
+@app.route('/api/empresas', methods=['GET'])
+def get_empresas():
+    # Conectar ao banco de dados
+    conn = connect_db()
+    cursor = conn.cursor()
+
+    # Consulta SQL para obter todas as empresas
+    query = "SELECT * FROM TBempresa"
+    cursor.execute(query)
+    
+    # Recuperar todas as linhas do resultado da consulta
+    empresas = cursor.fetchall()
+
+    # Converter as empresas em uma lista de dicionários
+    empresas_list = []
+    for empresa in empresas:
+        empresa_dict = {
+        'empcnpj' : empresa[0],
+        'empnaturezajuridica' : empresa[1],
+        'empnomerazao' : empresa[2],
+        'empnomefantasia' : empresa[3],
+        'empvendedor' : empresa[4],
+        'empsituacao' : empresa[5],
+        'emptipo' : empresa[6],
+        'empuf' : empresa[7],
+        'empmunicipio' : empresa[8],
+        'empemail' : empresa[9],
+        'empbairro' : empresa[10],
+        'emplogradouro' : empresa[11],
+        'empcep' : empresa[12],
+        'empnumeroendereco' : empresa[13],
+        'empcomplementoendereco' : empresa[14],
+        'emptelefone' : empresa[15],
+        'empstatus' : empresa[16],
+        'empporte' : empresa[17],
+        'empfatanualestimado' : empresa[18],
+        'empcapitalsocial' : empresa[19],
+        'empnumerofuncionarios' : empresa[20],
+        'empdataabertura' : empresa[21],
+        'empatividadepri' : empresa[22]
+
+        }            
+
+        empresas_list.append(empresa_dict)
+
+    # Fechar cursor e conexão com o banco de dados
+    cursor.close()
+    conn.close()
+
+    # Retornar os dados das empresas em formato JSON
+    return make_response(jsonify(empresas_list))
 
 app.run()
 
